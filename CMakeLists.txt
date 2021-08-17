@@ -89,17 +89,8 @@ include(cmake/DrogonUtilities.cmake)
 include(cmake/ParseAndAddDrogonTests.cmake)
 include(CheckIncludeFileCXX)
 
-check_include_file_cxx(any HAS_ANY)
-check_include_file_cxx(string_view HAS_STRING_VIEW)
-check_include_file_cxx(coroutine HAS_COROUTINE)
-check_include_file_cxx(filesystem HAS_FILESYSTEM)
-if (HAS_ANY AND HAS_STRING_VIEW AND HAS_COROUTINE AND HAS_FILESYSTEM)
-    set(DROGON_CXX_STANDARD 20)
-elseif (HAS_ANY AND HAS_STRING_VIEW AND HAS_FILESYSTEM)
-    set(DROGON_CXX_STANDARD 17)
-else ()
-    set(DROGON_CXX_STANDARD 14)
-endif ()
+set(DROGON_CXX_STANDARD ${CMAKE_CXX_STANDARD})
+message(STATUS "DROGON CXX standard = ${DROGON_CXX_STANDARD}")
 
 target_include_directories(
     ${PROJECT_NAME}
