@@ -47,7 +47,6 @@ void WebSocketClientImpl::stop()
         websockConnPtr_.reset();
     }
     tcpClientPtr_.reset();
-    requestCallback_ = nullptr;
 }
 void WebSocketClientImpl::createTcpClient()
 {
@@ -232,7 +231,6 @@ void WebSocketClientImpl::onRecvMessage(
         connPtr->shutdown();
         websockConnPtr_.reset();
         tcpClientPtr_.reset();
-        requestCallback_ = nullptr;
         return;
     }
 
@@ -251,7 +249,6 @@ void WebSocketClientImpl::onRecvMessage(
             connPtr->shutdown();
             websockConnPtr_.reset();
             tcpClientPtr_.reset();
-            requestCallback_ = nullptr;
             return;
         }
 
