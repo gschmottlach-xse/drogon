@@ -89,6 +89,11 @@ include(cmake/DrogonUtilities.cmake)
 include(cmake/ParseAndAddDrogonTests.cmake)
 include(CheckIncludeFileCXX)
 
+if ( NOT DEFINED CMAKE_CXX_STANDARD )
+    set(CMAKE_CXX_STANDARD 17)
+    message(STATUS "CMAKE_CXX_STANDARD not specified - defaulting to ${CMAKE_CXX_STANDARD}")
+endif ( NOT DEFINED CMAKE_CXX_STANDARD )
+
 set(DROGON_CXX_STANDARD ${CMAKE_CXX_STANDARD})
 message(STATUS "DROGON CXX standard = ${DROGON_CXX_STANDARD}")
 
